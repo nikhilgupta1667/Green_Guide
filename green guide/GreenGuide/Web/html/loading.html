@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyzing Plant Photo - Green Guide</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e8f5e9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #2e7d32;
+      text-align: center;
+    }
+
+    .spinner {
+      border: 8px solid #c8e6c9;
+      border-top: 8px solid #2e7d32;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 1.5s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .tips {
+      margin-top: 30px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 128, 0, 0.1);
+      max-width: 500px;
+    }
+
+    .tips h3 {
+      margin-bottom: 10px;
+    }
+
+    .tips ul {
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .cancel-button {
+      margin-top: 20px;
+      background-color: #a5d6a7;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #1b5e20;
+      cursor: pointer;
+    }
+
+    .cancel-button:hover {
+      background-color: #81c784;
+    }
+  </style>
+</head>
+<body>
+  <div class="spinner"></div>
+  <h2>Analyzing your plant photo… Please wait.</h2>
+
+  <div class="tips">
+    <h3>📸 Tips for Clear Plant Images</h3>
+    <ul>
+      <li>Ensure proper lighting</li>
+      <li>Keep the plant centered</li>
+      <li>Focus on affected areas</li>
+      <li>Use a plain background if possible</li>
+    </ul>
+  </div>
+
+  <button class="cancel-button" onclick="window.location.href='index.html'">Cancel</button>
+</body>
+</html>

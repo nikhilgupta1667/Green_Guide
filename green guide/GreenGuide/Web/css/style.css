@@ -1,0 +1,110 @@
+/* General styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #2e7d32;
+  }
+  
+  h1, h2, h3, p {
+    margin: 0.5em 0;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    background-color: #2e7d32;
+    padding: 10px;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar ul li {
+    margin: 0 15px;
+  }
+  
+  .navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .navbar ul li a.active,
+  .navbar ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Header */
+  .landing-header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(to right, #a5d6a7, #e8f5e9);
+  }
+  
+  .landing-header h1 {
+    font-size: 3em;
+    color: #2e7d32;
+  }
+  
+  .tagline {
+    font-size: 1.5em;
+    margin: 10px 0 20px;
+  }
+  
+  .landing-header button {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .landing-header button:hover {
+    background-color: #1b5e20;
+  }
+  
+  /* Benefits section */
+  .benefits {
+    background-color: #f1f8e9;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .benefits ul {
+    list-style-type: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .benefits li {
+    margin: 10px 0;
+    font-size: 1.2em;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+  }
+  
+  footer a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  

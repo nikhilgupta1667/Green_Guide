@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About & Help - Green Guide</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f9f1;
+      color: #2f5233;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #317b42;
+      padding: 1rem;
+      color: white;
+      text-align: center;
+    }
+
+    header nav a {
+      color: #d4f1d4;
+      text-decoration: none;
+      margin: 0 0.8rem;
+      font-weight: 600;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem 3rem 1rem;
+    }
+
+    h1, h2 {
+      color: #275d30;
+      margin-bottom: 0.5rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    /* FAQ Styles */
+    .faq-item {
+      margin-bottom: 1rem;
+      border-left: 4px solid #317b42;
+      padding-left: 1rem;
+      background-color: #e6f1e6;
+      border-radius: 4px;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .faq-icon {
+      font-size: 1.5rem;
+      color: #317b42;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .faq-question {
+      font-weight: 700;
+      margin: 0 0 0.3rem 0;
+      color: #2f5233;
+    }
+
+    /* Contact Form */
+    form {
+      background-color: #def2d8;
+      padding: 1.5rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgb(49 123 66 / 0.3);
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 1rem;
+      border: 1.5px solid #317b42;
+      border-radius: 4px;
+      font-size: 1rem;
+      color: #2f5233;
+      resize: vertical;
+    }
+
+    form textarea {
+      min-height: 100px;
+    }
+
+    form button {
+      background-color: #317b42;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.6rem;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #275d30;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      main {
+        margin: 1rem;
+        padding: 0 0.5rem 2rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌿 Green Guide</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="upload.html">New Diagnosis</a> |
+      <a href="about.html" aria-current="page" style="text-decoration: underline;">About & Help</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>About Green Guide</h2>
+      <p>
+        Green Guide is a passionate team of plant enthusiasts and AI experts dedicated to helping you keep your plants healthy and thriving. 
+        Using state-of-the-art artificial intelligence, we provide fast and accurate plant disease diagnosis and effective remedies to save your greenery.
+      </p>
+    </section>
+
+    <section>
+      <h2>How Our AI Works</h2>
+      <p>
+        Our AI analyzes the images you upload by comparing them to thousands of plant disease examples. It identifies patterns and symptoms to diagnose the condition of your plant. 
+        No technical knowledge required — just snap a clear picture and let Green Guide do the rest!
+      </p>
+    </section>
+
+    <section>
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-icon">❓</div>
+        <div>
+          <p class="faq-question">How do I take a good plant image?</p>
+          <p>Make sure your plant is well-lit, use natural light if possible, focus on affected areas, and avoid blurry or too distant shots.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-icon">🔒</div>
+        <div>
+          <p class="faq-question">Is my data safe?</p>
+          <p>Absolutely! We do not share your images or information with third parties. Your privacy is our priority.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-icon">⚙️</div>
+        <div>
+          <p class="faq-question">Can I get help for all plant types?</p>
+          <p>Green Guide supports a wide variety of common plants. We continually update our AI to support more species.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contact Us</h2>
+      <form id="contactForm" action="#" method="post" onsubmit="return handleSubmit(event)">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required placeholder="Your name" />
+
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
+
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" required placeholder="Write your message here..."></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert("Thank you for reaching out! We'll get back to you shortly.");
+      // Reset form after submission
+      e.target.reset();
+      return false;
+    }
+  </script>
+
+</body>
+</html>

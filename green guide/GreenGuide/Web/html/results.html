@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnosis Result - Green Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .image-preview {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .image-preview img {
+      width: 300px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 128, 0, 0.2);
+    }
+
+    .diagnosis {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .diagnosis h2 {
+      color: #1b5e20;
+    }
+
+    .remedies-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-around;
+    }
+
+    .remedy-card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 128, 0, 0.1);
+      padding: 20px;
+      flex: 1 1 300px;
+      max-width: 400px;
+    }
+
+    .remedy-card h3 {
+      color: #2e7d32;
+    }
+
+    .remedy-card ul {
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .links a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #1b5e20;
+      font-weight: bold;
+    }
+
+    .back-button {
+      margin-top: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10px 20px;
+      background-color: #a5d6a7;
+      color: #1b5e20;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .back-button:hover {
+      background-color: #81c784;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌿 Diagnosis Result</h1>
+    <p>Your plant has been analyzed. Here are the results:</p>
+  </header>
+
+  <div class="image-preview">
+    <img src="plant-sample.jpg" alt="Plant Sample" />
+  </div>
+
+  <div class="diagnosis">
+    <h2>Disease Detected: Leaf Spot</h2>
+    <p>Description: Leaf spot is a common fungal infection causing dark, round lesions on the leaves.</p>
+  </div>
+
+  <div class="remedies-container">
+    <div class="remedy-card">
+      <h3>🏠 Home Remedies</h3>
+      <ul>
+        <li>Remove affected leaves immediately</li>
+        <li>Spray diluted neem oil every 3 days</li>
+        <li>Avoid overhead watering</li>
+      </ul>
+    </div>
+    <div class="remedy-card">
+      <h3>🧪 Chemical Remedies</h3>
+      <ul>
+        <li>Use fungicide with chlorothalonil</li>
+        <li>Apply weekly as per label instructions</li>
+        <li>Wear gloves and avoid inhaling spray</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="links">
+    <a href="#">Get second opinion</a> |
+    <a href="#">Learn more</a>
+  </div>
+
+  <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+</body>
+</html>

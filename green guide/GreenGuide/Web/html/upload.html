@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Upload - Green Guide</title>
+  <style>
+    .upload-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #e8f5e9;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 128, 0, 0.2);
+    }
+
+    .upload-container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    form input[type="file"],
+    form input[type="text"],
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #previewContainer {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    #preview {
+      max-width: 100%;
+      max-height: 250px;
+      border-radius: 5px;
+      display: block;
+      margin: 10px auto;
+    }
+
+    button[type="submit"],
+    .back-button {
+      background-color: #2e7d32;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      width: 100%;
+      cursor: pointer;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    button[type="submit"]:hover,
+    .back-button:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <main class="upload-container">
+    <h1>Upload Plant Image</h1>
+    <!-- <form id="uploadForm">
+      <label for="plantImage">Select Plant Image:</label>
+      <input type="file" id="plantImage" name="plantImage" accept="image/*" required>
+
+      <div id="previewContainer">
+        <img id="preview" src="#" alt="Image Preview" style="display: none;" />
+      </div>
+
+      <label for="location">Your Location:</label>
+      <input type="text" id="location" name="location" placeholder="Auto-detecting...">
+
+      <label for="plantType">Select Plant Type (optional):</label>
+      <select id="plantType" name="plantType">
+        <option value="">--Select--</option>
+        <option value="tomato">Tomato</option>
+        <option value="rose">Rose</option>
+        <option value="basil">Basil</option>
+        <option value="other">Other</option>
+      </select>
+
+      <button type="submit"><a href="loading.html"> Analyzing Plant Health </a>   </button>
+    </form> -->
+    <form id="uploadForm"> 
+            <label for="plantImage">Select Plant Image:</label>
+      <input type="file" id="plantImage" name="plantImage" accept="image/*" required>
+
+      <div id="previewContainer">
+        <img id="preview" src="#" alt="Image Preview" style="display: none;" />
+      </div>
+
+      <label for="location">Your Location:</label>
+      <input type="text" id="location" name="location" placeholder="Auto-detecting...">
+
+      <label for="plantType">Select Plant Type (optional):</label>
+      <select id="plantType" name="plantType">
+        <option value="">--Select--</option>
+        <option value="tomato">Tomato</option>
+        <option value="rose">Rose</option>
+        <option value="basil">Basil</option>
+        <option value="other">Other</option>
+      </select>
+
+      <!-- <button type="submit"><a href="loading.html"> Analyzing Plant Health </a>   </button> -->
+       <button type="submit">Analyzing Plant Health</button>
+
+    </form>
+     <script>
+  document.getElementById("uploadForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const fileInput = document.getElementById("plantImage");
+  const location = document.getElementById("location").value;
+  const plantType = document.getElementById("plantType").value;
+
+  if (!fileInput.files.length) {
+    alert("Please select an image to upload.");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("plantImage", fileInput.files[0]);
+  formData.append("location", location);
+  formData.append("plantType", plantType);
+
+  try {
+    const response = await fetch("http://127.0.0.1:8000/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      alert(result.error || "Unknown error occurred");
+      return;
+    }
+
+    if (result.report_url) {
+      const link = document.createElement('a');
+      link.href = result.report_url;
+      link.download = result.report_url.split('/').pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // ✅ Optional: Navigate to loading.html after download
+      window.location.href = "loading.html";
+    } else {
+      alert("Prediction failed or no report URL returned.");
+    }
+
+  } catch (error) {
+    console.error("Upload error:", error);
+    alert("An error occurred while uploading the image.");
+  }
+});
+
+</script>
+
+
+    <a href="index.html" class="back-button">← Back to Home</a>
+  </main>
+
+  <script>
+    // Image preview
+    document.getElementById('plantImage').addEventListener('change', function (e) {
+      const preview = document.getElementById('preview');
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Auto-detect location
+    window.onload = function () {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const locationInput = document.getElementById('location');
+          locationInput.value = `${position.coords.latitude}, ${position.coords.longitude}`;
+        }, function () {
+          document.getElementById('location').placeholder = "Enter your location manually";
+        });
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Past Diagnoses - Green Guide</title>
+  <style>
+    body.history-body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f9f1;
+      color: #2f5233;
+      margin: 0;
+      padding: 0;
+    }
+
+    .history-header {
+      background-color: #317b42;
+      padding: 1rem;
+      color: white;
+      text-align: center;
+    }
+
+    .history-header nav a {
+      color: #d4f1d4;
+      text-decoration: none;
+      margin: 0 0.8rem;
+      font-weight: 600;
+    }
+
+    .history-header nav a:hover {
+      text-decoration: underline;
+    }
+
+    .history-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .history-container h2 {
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #275d30;
+    }
+
+    .filter-section {
+      margin-bottom: 1.5rem;
+      text-align: right;
+    }
+
+    .filter-section label {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+
+    .filter-section select {
+      padding: 0.4rem 0.8rem;
+      font-size: 1rem;
+      border: 1.5px solid #317b42;
+      border-radius: 4px;
+      background-color: white;
+      color: #2f5233;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      box-shadow: 0 2px 6px rgb(49 123 66 / 0.3);
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    thead {
+      background-color: #317b42;
+      color: white;
+    }
+
+    thead th {
+      padding: 12px 15px;
+      text-align: left;
+      font-weight: 700;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #e1e7e1;
+      transition: background-color 0.3s ease;
+    }
+
+    tbody tr:hover {
+      background-color: #def2d8;
+    }
+
+    tbody td {
+      padding: 10px 15px;
+      vertical-align: middle;
+    }
+
+    .thumbnail {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #c2d8c2;
+    }
+
+    tbody a {
+      color: #317b42;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    tbody a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="history-body">
+
+  <header class="history-header">
+    <h1>🌿 Green Guide</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="upload.html">New Diagnosis</a> |
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="history-container">
+    <h2>Your Past Diagnoses</h2>
+
+    <div class="filter-section">
+      <label for="diseaseFilter">Filter by Disease:</label>
+      <select id="diseaseFilter" onchange="filterTable()">
+        <option value="all">All</option>
+        <option value="Powdery Mildew">Powdery Mildew</option>
+        <option value="Leaf Spot">Leaf Spot</option>
+        <option value="Healthy">Healthy</option>
+        <option value="Root Rot">Root Rot</option>
+      </select>
+    </div>
+
+    <table id="diagnosisTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Plant Image</th>
+          <th>Disease Name</th>
+          <th>Remedy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025-05-10</td>
+          <td><img src="images/plant1.jpg" alt="Plant 1" class="thumbnail" /></td>
+          <td>Powdery Mildew</td>
+          <td><a href="remedies-detail.html">View Remedy</a></td>
+        </tr>
+        <tr>
+          <td>2025-04-28</td>
+          <td><img src="images/plant2.jpg" alt="Plant 2" class="thumbnail" /></td>
+          <td>Leaf Spot</td>
+          <td><a href="remedies-detail.html">View Remedy</a></td>
+        </tr>
+        <tr>
+          <td>2025-03-15</td>
+          <td><img src="images/plant3.jpg" alt="Plant 3" class="thumbnail" /></td>
+          <td>Healthy</td>
+          <td><a href="#">No Remedy Needed</a></td>
+        </tr>
+        <tr>
+          <td>2025-02-20</td>
+          <td><img src="images/plant4.jpg" alt="Plant 4" class="thumbnail" /></td>
+          <td>Root Rot</td>
+          <td><a href="remedies-detail.html">View Remedy</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    function filterTable() {
+      const filter = document.getElementById("diseaseFilter").value.toLowerCase();
+      const table = document.getElementById("diagnosisTable");
+      const tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows (except the header)
+      for (let i = 1; i < tr.length; i++) {
+        const td = tr[i].getElementsByTagName("td")[2]; // Disease Name column
+        if (td) {
+          const txtValue = td.textContent || td.innerText;
+          if (filter === "all" || txtValue.toLowerCase() === filter) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
+  
+</body>
+</html>
